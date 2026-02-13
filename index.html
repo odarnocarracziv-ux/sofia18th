@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Debutante | Special Edition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --light-grey: #f8f8f8;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--black);
+        }
+
+        /* Magazine Container */
+        .magazine-container {
+            max-width: 480px; /* Mobile-first design */
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* Section 1: The Cover */
+        .page.cover {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            color: var(--white);
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            font-weight: 600;
+            border-bottom: 1.5px solid rgba(255,255,255,0.4);
+            padding-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .masthead {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            margin: 10px 0;
+            letter-spacing: -3px;
+            font-weight: 700;
+        }
+
+        .cover-footer {
+            text-align: left;
+        }
+
+        .sub-headline { letter-spacing: 6px; font-size: 0.75rem; margin-bottom: 5px; }
+        
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin: 0;
+            line-height: 0.9;
+        }
+
+        .tagline { font-style: italic; font-size: 0.9rem; margin-top: 10px; opacity: 0.9; }
+
+        /* Section 2: The Details */
+        .page.details {
+            padding: 60px 40px;
+            background: var(--white);
+            position: relative;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 0 0 30px 0;
+        }
+
+        .drop-cap {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 5px;
+            color: var(--gold);
+        }
+
+        .article-text {
+            line-height: 1.8;
+            font-size: 0.95rem;
+            color: #444;
+            text-align: justify;
+        }
+
+        .event-grid {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+
+        .info-row {
+            margin-bottom: 25px;
+        }
+
+        .info-row h4 {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin: 0 0 8px 0;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .info-row p { margin: 0; font-size: 1rem; color: #666; }
+
+        /* Section 3: Gallery Spread */
+        .gallery {
+            background: var(--light-grey);
+            padding: 40px 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(20%);
+            transition: 0.5s;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            height: 300px;
+        }
+
+        /* RSVP Button */
+        .rsvp-section {
+            padding: 40px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 20px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            transform: scale(1.02);
+        }
+
+        footer {
+            padding: 20px;
+            font-size: 0.6rem;
+            text-align: center;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="magazine-container">
+        
+        <header class="page cover">
+            <div class="top-header">
+                <span>ISSUE NO. 18</span>
+                <span>LIMITED EDITION</span>
+                <span>FEB 2026</span>
+            </div>
+            
+            <h1 class="masthead">ELITE</h1>
+            
+            <div class="cover-footer">
+                <p class="sub-headline">THE ASCENSION OF</p>
+                <h2 class="name">ELIZA</h2>
+                <p class="tagline">Style, Substance, and Eighteen Years of Grace</p>
+            </div>
+        </header>
+
+        <section class="page details">
+            <span class="section-label">Feature Story</span>
+            <h3 class="section-title">The Debutante’s Ball</h3>
+            
+            <div class="article-text">
+                <span class="drop-cap">A</span>
+                <p>s the clock strikes eighteen, a new chapter unfolds. We invite you to an evening defined by elegance and celebration as we honor <strong>Eliza</strong> on her milestone birthday. Join us for a night where memories are made and dreams take flight.</p>
+            </div>
+
+            <div class="event-grid">
+                <div class="info-row reveal">
+                    <h4>THE DATE</h4>
+                    <p>Saturday, May 23, 2026</p>
+                    <p>Cocktails at 6:00 PM</p>
+                </div>
+                
+                <div class="info-row reveal">
+                    <h4>THE VENUE</h4>
+                    <p>The Emerald Grand Ballroom</p>
+                    <p>Skyline Plaza, Metro City</p>
+                </div>
+
+                <div class="info-row reveal">
+                    <h4>ATTIRE</h4>
+                    <p>Formal Black Tie</p>
+                    <p>Palette: Midnight Blue & Silver</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="gallery">
+            <div class="gallery-item large reveal" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=1000');"></div>
+            <div class="gallery-item reveal" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=500');"></div>
+            <div class="gallery-item reveal" style="background-image: url('https://images.unsplash.com/photo-1496302662116-35cc4f36df92?auto=format&fit=crop&q=80&w=500');"></div>
+        </div>
+
+        <section class="rsvp-section">
+            <p style="font-size: 0.8rem; margin-bottom: 20px;">Kindly respond by the 10th of May</p>
+            <button id="rsvpBtn" class="cta-button">CONFIRM ATTENDANCE</button>
+        </section>
+
+        <footer>
+            &copy; 2026 ELIZA'S DEBUT | DESIGNED FOR THE MODERN CELEBRATION
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // RSVP Interaction
+            const rsvpBtn = document.getElementById('rsvpBtn');
+            rsvpBtn.addEventListener('click', () => {
+                rsvpBtn.innerText = "OPENING GUESTLIST...";
+                rsvpBtn.style.backgroundColor = "#c5a059";
+                
+                setTimeout(() => {
+                    // Replace the URL below with your actual RSVP link (Google Form, etc.)
+                    window.location.href = "https://forms.google.com";
+                }, 800);
+            });
+
+            // Scroll Reveal Animation
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                for (let i = 0; i < revealElements.length; i++) {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = revealElements[i].getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        revealElements[i].classList.add("active");
+                    }
+                }
+            };
+
+            window.addEventListener("scroll", revealOnScroll);
+            // Initial check in case elements are already in view
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
