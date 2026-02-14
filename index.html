@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Debutante | Special Edition</title>
+    <title>Sofia's 18th | Special Edition</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --gold: #c5a059;
-            --black: #1a1a1a;
+            --pastel-purple: #D1C4E9;
+            --gold: #fefefe;
+            --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             --white: #ffffff;
-            --light-grey: #f8f8f8;
+            --black: #1a1a1a;
+            /* Event Palette Colors */
+            --c-white: #ffffff;
+            --c-cream: #F5F5DC;
+            --c-green: #9fb8ad;
+            --c-brown: #bc9c82;
+            --c-blue: #4A90E2; 
+            --c-gray: #808080;
         }
 
         * {
@@ -25,296 +33,255 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #e0e0e0;
+            background-color: #2c2c2c;
             font-family: 'Montserrat', sans-serif;
-            color: var(--black);
+            overflow: hidden; 
         }
 
-        /* Magazine Container */
         .magazine-container {
-            max-width: 480px; /* Mobile-first design */
+            width: 100vw;
+            height: 100vh;
+            max-width: 500px;
             margin: 0 auto;
             background: var(--white);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        /* Section 1: The Cover */
-        .page.cover {
+        .page {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000') no-repeat center center;
-            background-size: cover;
+            width: 100%;
+            position: relative;
             display: flex;
             flex-direction: column;
-            padding: 25px;
-            color: var(--white);
-            text-align: center;
             justify-content: space-between;
+            padding: 30px 25px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .top-header {
+        .page.cover { background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('images/1.jpg') no-repeat center center; background-size: cover; color: var(--white); }
+        .page.event { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/2.jpg') no-repeat center center; background-size: cover; color: var(--white); text-align: center; }
+        .page.roses { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/3.jpg') no-repeat center center; background-size: cover; color: var(--white); text-align: center; }
+        .page.candles { background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%), url('images/4.jpg') no-repeat center center; background-size: cover; color: var(--white); text-align: left; }
+        .page.gifts { background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%), url('images/5.jpg') no-repeat center center; background-size: cover; color: var(--white); text-align: left; }
+        
+        .page.album { 
+            background: var(--white); 
+            color: var(--black); 
+            overflow-y: auto; 
+            padding: 20px;
+        }
+
+        .top-info {
             display: flex;
             justify-content: space-between;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            border-bottom: 1.5px solid rgba(255,255,255,0.4);
-            padding-bottom: 8px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
         }
 
-        .masthead {
+        .exclusive-tag { border: 1px solid var(--gold); padding: 2px 8px; }
+        .cover-footer, .event-details { text-align: center; padding-bottom: 20px; }
+        .intro-label { font-size: 1rem; letter-spacing: 6px; margin-bottom: 5px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+        .name-sofia {
             font-family: 'Playfair Display', serif;
             font-size: 5.5rem;
-            margin: 10px 0;
-            letter-spacing: -3px;
-            font-weight: 700;
-        }
-
-        .cover-footer {
-            text-align: left;
-        }
-
-        .sub-headline { letter-spacing: 6px; font-size: 0.75rem; margin-bottom: 5px; }
-        
-        .name {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
             margin: 0;
-            line-height: 0.9;
+            font-weight: 900;
+            line-height: 1;
+            background: var(--gold-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
         }
 
-        .tagline { font-style: italic; font-size: 0.9rem; margin-top: 10px; opacity: 0.9; }
+        .sub-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-top: 10px; letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .invitation-message { padding: 0 10px; margin-top: 20px; line-height: 1.6; font-size: 0.95rem; text-align: justify; font-weight: 300; }
+        .drop-cap { float: left; font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 0.8; margin-right: 10px; margin-top: 5px; color: var(--pastel-purple); font-weight: 700; }
 
-        /* Section 2: The Details */
-        .page.details {
-            padding: 60px 40px;
-            background: var(--white);
-            position: relative;
+        .detail-item { margin: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px; }
+        .detail-item h3 { font-size: 0.65rem; letter-spacing: 3px; color: var(--pastel-purple); margin-bottom: 3px; text-transform: uppercase; }
+        .detail-item p { font-size: 0.9rem; margin: 0; font-weight: 400; }
+
+        .palette-bar { display: flex; justify-content: center; gap: 10px; margin-top: 8px; }
+        .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); }
+
+        .ceremony-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 20px; font-size: 0.75rem; text-align: center; }
+        .page.candles .ceremony-list, .page.gifts .ceremony-list { grid-template-columns: 1fr; text-align: left; max-width: 65%; }
+        .ceremony-list p { margin: 5px 0; font-weight: 300; letter-spacing: 1px; padding-bottom: 5px; border-bottom: none; }
+
+        .section-header { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            background: var(--gold-gradient); 
+            background-clip: text; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            color: transparent; 
+            margin-bottom: 10px; 
         }
 
-        .section-label {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            display: block;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            text-align: center;
-            margin: 0 0 30px 0;
-        }
-
-        .drop-cap {
-            float: left;
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            line-height: 0.8;
-            margin-right: 12px;
-            margin-top: 5px;
-            color: var(--gold);
-        }
-
-        .article-text {
-            line-height: 1.8;
-            font-size: 0.95rem;
-            color: #444;
-            text-align: justify;
-        }
-
-        .event-grid {
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 30px;
-        }
-
-        .info-row {
-            margin-bottom: 25px;
-        }
-
-        .info-row h4 {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            margin: 0 0 8px 0;
-            color: var(--black);
-            font-weight: 600;
-        }
-
-        .info-row p { margin: 0; font-size: 1rem; color: #666; }
-
-        /* Section 3: Gallery Spread */
-        .gallery {
-            background: var(--light-grey);
-            padding: 40px 10px;
+        /* Responsive Gallery Layout */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for vertical images side-by-side */
+            gap: 12px;
+            margin-top: 20px;
+            padding-bottom: 100px;
         }
 
         .gallery-item {
-            width: 100%;
-            height: 200px;
-            background-size: cover;
+            width: 100%; 
+            aspect-ratio: 2/3; /* Standard vertical portrait aspect ratio */
+            background-size: cover; 
             background-position: center;
-            filter: grayscale(20%);
-            transition: 0.5s;
+            border-radius: 2px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .gallery-item.large {
+        /* Horizontal/Landscape logic: span 2 columns to appear one after the other */
+        .gallery-item.horizontal {
             grid-column: span 2;
-            height: 300px;
+            aspect-ratio: 3/2; /* Landscape aspect ratio */
         }
 
-        /* RSVP Button */
-        .rsvp-section {
-            padding: 40px;
-            text-align: center;
-            background: var(--white);
+        .swipe-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; cursor: pointer; padding: 8px 10px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: bounce 2s infinite; z-index: 10; }
+        .swipe-hint.dark { background: rgba(0,0,0,0.05); color: var(--black); border: 1px solid rgba(0,0,0,0.1); }
+        .swipe-hint span { font-size: 0.52rem; letter-spacing: 2px; font-weight: 600; display: block; margin-bottom: 2px; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
         }
 
-        .cta-button {
-            width: 100%;
-            padding: 20px;
-            background: var(--black);
-            color: var(--white);
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: var(--gold);
-            transform: scale(1.02);
-        }
-
-        footer {
-            padding: 20px;
-            font-size: 0.6rem;
-            text-align: center;
-            color: #999;
-            letter-spacing: 1px;
-        }
-
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .date-footer { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 2px; font-weight: 600; }
 
     </style>
 </head>
 <body>
 
-    <div class="magazine-container">
+    <div class="magazine-container" id="container">
         
         <header class="page cover">
-            <div class="top-header">
-                <span>ISSUE NO. 18</span>
-                <span>LIMITED EDITION</span>
-                <span>FEB 2026</span>
-            </div>
-            
-            <h1 class="masthead">ELITE</h1>
-            
+            <div class="top-info"><span>ISSUE NO. 18</span><span class="exclusive-tag">EXCLUSIVE</span><span>MARCH 2026</span></div>           
             <div class="cover-footer">
-                <p class="sub-headline">THE ASCENSION OF</p>
-                <h2 class="name">ELIZA</h2>
-                <p class="tagline">Style, Substance, and Eighteen Years of Grace</p>
+                <p class="intro-label">THE DEBUT OF</p><h2 class="name-sofia">SOFIA</h2><p class="sub-tagline">A Day of Wonder & Grace</p>
+                <div class="date-footer"><span>CELEBRATING 18 YEARS</span><span>BORN MARCH 28, 2008</span></div>
             </div>
+            <div class="swipe-hint" onclick="goToPage(1)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
         </header>
 
-        <section class="page details">
-            <span class="section-label">Feature Story</span>
-            <h3 class="section-title">The Debutante’s Ball</h3>
-            
-            <div class="article-text">
-                <span class="drop-cap">A</span>
-                <p>s the clock strikes eighteen, a new chapter unfolds. We invite you to an evening defined by elegance and celebration as we honor <strong>Eliza</strong> on her milestone birthday. Join us for a night where memories are made and dreams take flight.</p>
-            </div>
-
-            <div class="event-grid">
-                <div class="info-row reveal">
-                    <h4>THE DATE</h4>
-                    <p>Saturday, May 23, 2026</p>
-                    <p>Cocktails at 6:00 PM</p>
+        <section class="page event">
+            <div class="top-info"><span>FEATURE STORY</span><span>THE CELEBRATION</span></div>
+            <div class="invitation-message"><span class="drop-cap">Y</span>ou are cordially invited to witness the transition of our beloved daughter into womanhood. A milestone celebrated with music, laughter, and the people who matter most.</div>
+            <div class="event-details">
+                <div class="detail-item"><h3>WHEN</h3><p>March 21, 2026 | 4:00 PM</p></div>
+                <div class="detail-item"><h3>WHERE</h3><p>Kainan ni Mang Peping</p><p style="font-size: 0.8rem; opacity: 0.8;">De Venecia Rd. Highway, Dagupan City</p></div>
+                <div class="detail-item"><h3>ATTIRE</h3><p>Semi-Formal</p></div>
+                <div class="detail-item"><h3>COLOR PALETTE</h3>
+                    <div class="palette-bar">
+                        <div class="color-dot" style="background: var(--c-white);"></div><div class="color-dot" style="background: var(--c-cream);"></div><div class="color-dot" style="background: var(--c-green);"></div><div class="color-dot" style="background: var(--c-brown);"></div><div class="color-dot" style="background: var(--c-blue);"></div><div class="color-dot" style="background: var(--c-gray);"></div>
+                    </div>
                 </div>
+            </div>
+            <div class="swipe-hint" onclick="goToPage(2)"><span>18 ROSES</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page roses">
+            <div class="top-info"><span>SPECIAL FEATURE</span><span>CEREMONY</span></div>
+            <div class="roses-content"><h2 class="section-header">18 Roses</h2>
+                <div class="ceremony-list">
+                    <div class="col"><p>Armando Lomibao</p><p>Serapio Suyom Jr.</p><p>Allen Lomibao</p><p>Marcus Tan</p><p>Paolo De Guzman</p><p>Ralph Reiven Camat</p><p>John Paul Diaz</p><p>Ian Dela Cruz</p><p>Mc Dwayne Mapatac</p></div>
+                    <div class="col"><p>Karl Tongson</p><p>Sam Calamiong</p><p>Jaymar Montimor</p><p>Christopher Rendon</p><p>Lester Polinada</p><p>Ric Clauna</p><p>Nickie Raon</p><p>Michael Lim</p><p>Conrado Vizcarra</p></div>
+                </div>
+            </div>
+            <div class="swipe-hint" onclick="goToPage(3)"><span>18 CANDLES</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page candles">
+            <div class="top-info"><span>SPECIAL FEATURE</span><span>CEREMONY</span></div>
+            <div class="candles-content"><h2 class="section-header">18 Candles</h2>
+                <div class="ceremony-list">
+                    <div class="col"><p>Rhean Cabrera</p><p>Xophia Junio</p><p>Raiza Banda</p><p>Pauline Bugarin</p><p>Aliah Lomibao</p><p>Ashley Mabolo</p><p>Maica Zamora</p><p>Meleia Zamora</p><p>Marivic Zamora</p><p>Marcie Maramba</p><p>Linda Mae Tan</p><p>Justine Beria</p><p>Maeann Lomibao</p><p>Alfie Dela Cruz</p><p>Jasmine Tan</p><p>Judy Lomibao</p><p>Nanneth Vizcarra</p><p>Samantha Vizcarra</p></div>
+                </div>
+            </div>
+            <div class="swipe-hint" onclick="goToPage(4)"><span>18 GIFTS</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page gifts">
+            <div class="top-info"><span>SPECIAL FEATURE</span><span>CEREMONY</span></div>
+            <div class="gifts-content"><h2 class="section-header">18 Gifts</h2>
+                <div class="ceremony-list">
+                    <div class="col"><p>Erianne Evangelista</p><p>Ashley Martin</p><p>Jhannelle De Vera</p><p>Martha Bustamante</p><p>Abegail Tandoc</p><p>Hershy Ballesteros</p><p>Crystal Villasor</p><p>Lei Aena Mejia</p><p>Clarrisse Novis</p><p>Briesis Librando</p><p>Rhiane Santillan</p><p>Emiluz Vinluan</p><p>Nicolle Camat</p><p>Althea Dela Cruz</p><p>Monica Maramba</p><p>Nica Lomibao</p><p>Jennalyn Balagtas</p><p>Patria Ignacio</p></div>
+                </div>
+            </div>
+            <div class="swipe-hint" onclick="goToPage(5)"><span>LOOKBOOK</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page album">
+            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK</span></div>
+            <h2 class="section-header" style="text-align: center; margin-top: 10px;">Album</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('images/album/1.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/2.jpg');"></div>                
+                <div class="gallery-item horizontal" style="background-image: url('images/album/3.jpg');"></div>
+
+                <div class="gallery-item" style="background-image: url('images/album/9.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/10.jpg');"></div>  
+                <div class="gallery-item horizontal" style="background-image: url('images/album/6.jpg');"></div>
+
+                <div class="gallery-item" style="background-image: url('images/album/4.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/7.jpg');"></div>                
+                <div class="gallery-item horizontal" style="background-image: url('images/album/5.jpg');"></div>
+
+                <div class="gallery-item" style="background-image: url('images/album/14.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/15.jpg');"></div>
+                <div class="gallery-item horizontal" style="background-image: url('images/album/13.jpg');"></div>
                 
-                <div class="info-row reveal">
-                    <h4>THE VENUE</h4>
-                    <p>The Emerald Grand Ballroom</p>
-                    <p>Skyline Plaza, Metro City</p>
-                </div>
+                <div class="gallery-item" style="background-image: url('images/album/11.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/12.jpg');"></div>
+                <div class="gallery-item horizontal" style="background-image: url('images/album/8.jpg');"></div>                                  
+                
+                <div class="gallery-item" style="background-image: url('images/album/16.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('images/album/17.jpg');"></div>
+                <div class="gallery-item horizontal" style="background-image: url('images/album/18.jpg');"></div>    
 
-                <div class="info-row reveal">
-                    <h4>ATTIRE</h4>
-                    <p>Formal Black Tie</p>
-                    <p>Palette: Midnight Blue & Silver</p>
-                </div>
+
+            </div>
+            <div class="swipe-hint dark" onclick="goToPage(0)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                <span style="margin-top: 3px;">BACK TO COVER</span>
             </div>
         </section>
-
-        <div class="gallery">
-            <div class="gallery-item large reveal" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=1000');"></div>
-            <div class="gallery-item reveal" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=500');"></div>
-            <div class="gallery-item reveal" style="background-image: url('https://images.unsplash.com/photo-1496302662116-35cc4f36df92?auto=format&fit=crop&q=80&w=500');"></div>
-        </div>
-
-        <section class="rsvp-section">
-            <p style="font-size: 0.8rem; margin-bottom: 20px;">Kindly respond by the 10th of May</p>
-            <button id="rsvpBtn" class="cta-button">CONFIRM ATTENDANCE</button>
-        </section>
-
-        <footer>
-            &copy; 2026 ELIZA'S DEBUT | DESIGNED FOR THE MODERN CELEBRATION
-        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // RSVP Interaction
-            const rsvpBtn = document.getElementById('rsvpBtn');
-            rsvpBtn.addEventListener('click', () => {
-                rsvpBtn.innerText = "OPENING GUESTLIST...";
-                rsvpBtn.style.backgroundColor = "#c5a059";
-                
-                setTimeout(() => {
-                    // Replace the URL below with your actual RSVP link (Google Form, etc.)
-                    window.location.href = "";
-                }, 800);
-            });
+        const container = document.getElementById('container');
+        let currentPage = 0;
+        const totalPages = 6;
 
-            // Scroll Reveal Animation
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealOnScroll = () => {
-                for (let i = 0; i < revealElements.length; i++) {
-                    const windowHeight = window.innerHeight;
-                    const elementTop = revealElements[i].getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < windowHeight - elementVisible) {
-                        revealElements[i].classList.add("active");
-                    }
-                }
-            };
+        function goToPage(index) {
+            currentPage = index;
+            container.style.transform = `translateY(-${index * 100}vh)`;
+        }
 
-            window.addEventListener("scroll", revealOnScroll);
-            // Initial check in case elements are already in view
-            revealOnScroll();
-        });
+        let touchstartY = 0;
+        let touchendY = 0;
+        document.addEventListener('touchstart', e => { touchstartY = e.changedTouches[0].screenY; });
+        document.addEventListener('touchend', e => { touchendY = e.changedTouches[0].screenY; handleGesture(); });
+
+        function handleGesture() {
+            if (touchstartY - touchendY > 50 && currentPage < totalPages - 1) goToPage(currentPage + 1);
+            if (touchendY - touchstartY > 50 && currentPage > 0) goToPage(currentPage - 1);
+        }
     </script>
 </body>
 </html>
