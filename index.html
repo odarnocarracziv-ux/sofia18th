@@ -292,7 +292,7 @@
         const totalPages = 7;
 
         function goToPage(index) {
-            currentPage = index;
+            currentPage = Math.max(0, Math.min(index, totalPages - 1));
             container.style.transform = `translateY(-${index * 100}vh)`;
         }
 
