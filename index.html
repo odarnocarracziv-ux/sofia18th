@@ -16,7 +16,6 @@
             --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             --white: #ffffff;
             --black: #1a1a1a;
-            /* Event Palette Colors */
             --c-white: #ffffff;
             --c-cream: #F5F5DC;
             --c-green: #9fb8ad;
@@ -59,6 +58,7 @@
             padding: 30px 25px;
             background-size: cover;
             background-position: center;
+            flex-shrink: 0;
         }
 
         .page.cover { background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('images/1.jpg') no-repeat center center; background-size: cover; color: var(--white); }
@@ -70,11 +70,10 @@
         .page.album { 
             background: var(--white); 
             color: var(--black); 
-            overflow-y: auto; 
+            overflow: hidden; 
             padding: 20px;
         }
 
-        /* NEW PAGE STYLING */
         .page.thankyou { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('images/10.jpg') no-repeat center center; background-size: cover; color: var(--white); text-align: center; }
 
         .top-info {
@@ -131,18 +130,16 @@
             margin-bottom: 10px; 
         }
 
-        /* Responsive Gallery Layout */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
             gap: 12px;
-            margin-top: 20px;
-            padding-bottom: 100px;
+            margin-top: 10px;
+            height: calc(100vh - 250px);
         }
 
         .gallery-item {
             width: 100%; 
-            aspect-ratio: 2/3; 
             background-size: cover; 
             background-position: center;
             border-radius: 2px; 
@@ -151,7 +148,7 @@
 
         .gallery-item.horizontal {
             grid-column: span 2;
-            aspect-ratio: 3/2; 
+            
         }
 
         .swipe-hint { position: absolute; top: 50px; left: 85%; transform: translateX(-50%); text-align: center; cursor: pointer; padding: 8px 10px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: bounce 2s infinite; z-index: 10; }
@@ -166,7 +163,6 @@
 
         .date-footer { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 2px; font-weight: 600; }
 
-        /* RSVP Button */
         .rsvp-btn {
             display: inline-block;
             margin-top: 20px;
@@ -189,7 +185,7 @@
     <div class="magazine-container" id="container">
         
         <header class="page cover">
-            <div class="top-info"><span>ISSUE NO. 18</span><span class="exclusive-tag">EXCLUSIVE</span><span>MARCH 2026</span></div>           
+            <div class="top-info"><span>ISSUE NO. 18</span><span class="exclusive-tag">EXCLUSIVE</span><span>MARCH 2026</span></div>           
             <div class="cover-footer">
                 <p class="intro-label">THE DEBUT OF</p><h2 class="name-sofia">SOFIA</h2><p class="sub-tagline">A Day of Wonder & Grace</p>
                 <div class="date-footer"><span>CELEBRATING 18 YEARS</span><span>BORN MARCH 28, 2008</span></div>
@@ -238,30 +234,56 @@
             <div class="top-info"><span>SPECIAL FEATURE</span><span>CEREMONY</span></div>
             <div class="gifts-content"><h2 class="section-header">18 Gifts</h2>
                 <div class="ceremony-list">
-                    <div class="col"><p>Erianne Evangelista</p><p>Ashley Martin</p><p>Martha Bustamante</p><p>Abegail Tandoc</p><p>Hershy Ballesteros</p><p>Crystal Villasor</p><p>Lei Aena Mejia</p><p>Clarrisse Novis</p><p>Briesis Librando</p><p>Rhiane Santillan</p><P>Emiluz Vinluan</P><p>Justine Beria</p><p>Nicolle Camat</p><p>Nicah  Zamora</p><p>Monica Maramba</p><p>Nica Lomibao</p><p>Jennalyn Balagtas</p><p>Patria Ignacio</p></div>
+                    <div class="col"><p>Erianne Evangelista</p><p>Ashley Martin</p><p>Martha Bustamante</p><p>Abegail Tandoc</p><p>Hershy Ballesteros</p><p>Crystal Villasor</p><p>Lei Aena Mejia</p><p>Clarrisse Novis</p><p>Briesis Librando</p><p>Rhiane Santillan</p><P>Emiluz Vinluan</P><p>Justine Beria</p><p>Nicolle Camat</p><p>Nicah Zamora</p><p>Monica Maramba</p><p>Nica Lomibao</p><p>Jennalyn Balagtas</p><p>Patria Ignacio</p></div>
                 </div>
             </div>
             <div class="swipe-hint" onclick="goToPage(5)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
         </section>
 
         <section class="page album">
-            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK</span></div>
+            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK 1/4</span></div>
             <h2 class="section-header" style="text-align: center; margin-top: 10px;">Album</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" style="background-image: url('album/1.jpg');"></div>
                 <div class="gallery-item" style="background-image: url('album/2.jpg');"></div>
-                <div class="gallery-item horizontal" style="background-image: url('album/3.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('album/3.jpg');"></div>
+                <div class="gallery-item horizontal" style="background-image: url('album/1.jpg');"></div>
+                
+            </div>
+            <div class="swipe-hint dark" onclick="goToPage(6)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page album">
+            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK 2/4</span></div>
+            <h2 class="section-header" style="text-align: center; margin-top: 10px;">Album</h2>
+            <div class="gallery-grid">
                 <div class="gallery-item" style="background-image: url('album/9.jpg');"></div>
                 <div class="gallery-item" style="background-image: url('album/10.jpg');"></div>
                 <div class="gallery-item horizontal" style="background-image: url('album/6.jpg');"></div>
-                <div class="gallery-item" style="background-image: url('album/4.jpg');"></div>
+            </div>
+            <div class="swipe-hint dark" onclick="goToPage(7)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page album">
+            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK 3/4</span></div>
+            <h2 class="section-header" style="text-align: center; margin-top: 10px;">Album</h2>
+            <div class="gallery-grid">
                 <div class="gallery-item" style="background-image: url('album/7.jpg');"></div>
-                <div class="gallery-item horizontal" style="background-image: url('album/5.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('album/5.jpg');"></div>
+                <div class="gallery-item horizontal" style="background-image: url('album/4.jpg');"></div>
+            </div>
+            <div class="swipe-hint dark" onclick="goToPage(8)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
+
+        <section class="page album">
+            <div class="top-info" style="color: var(--black);"><span>PORTFOLIO</span><span>THE LOOKBOOK 4/4</span></div>
+            <h2 class="section-header" style="text-align: center; margin-top: 10px;">Album</h2>
+            <div class="gallery-grid">
                 <div class="gallery-item" style="background-image: url('album/14.jpg');"></div>
                 <div class="gallery-item" style="background-image: url('album/15.jpg');"></div>
                 <div class="gallery-item horizontal" style="background-image: url('album/13.jpg');"></div>
             </div>
-        </header>
+            <div class="swipe-hint dark" onclick="goToPage(9)"><span>SWIPE UP</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg></div>
+        </section>
 
         <section class="page thankyou">
             <div class="top-info"><span>DEBUTANTE'S MESSAGE</span><span>GRATITUDE</span></div>
@@ -289,17 +311,23 @@
     <script>
         const container = document.getElementById('container');
         let currentPage = 0;
-        const totalPages = 7;
+        const totalPages = 10;
 
         function goToPage(index) {
             currentPage = Math.max(0, Math.min(index, totalPages - 1));
-            container.style.transform = `translateY(-${index * 100}vh)`;
+            container.style.transform = `translateY(-${currentPage * 100}vh)`;
         }
 
         let touchstartY = 0;
         let touchendY = 0;
-        document.addEventListener('touchstart', e => { touchstartY = e.changedTouches[0].screenY; });
-        document.addEventListener('touchend', e => { touchendY = e.changedTouches[0].screenY; handleGesture(); });
+        document.addEventListener('touchstart', e => { 
+            touchstartY = e.changedTouches[0].screenY; 
+        }, {passive: true});
+        
+        document.addEventListener('touchend', e => { 
+            touchendY = e.changedTouches[0].screenY; 
+            handleGesture(); 
+        }, {passive: true});
 
         function handleGesture() {
             if (touchstartY - touchendY > 50 && currentPage < totalPages - 1) goToPage(currentPage + 1);
